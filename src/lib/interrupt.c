@@ -1,5 +1,6 @@
 #include "interrupt.h"
 #include "button.h"
+#include "led.h"
 #include "pico/bootrom.h"
 #include "pico/stdlib.h"
 #include <stdio.h>
@@ -14,5 +15,16 @@ void gpio_irq_handler(uint gpio, uint32_t events) {
         // Habilita a entrada do modo BOOTSELL ao pressionar JOYSTICK_BUTTON
         if(gpio == JOYSTICK_BUTTON)
             reset_usb_boot(0,0);
+
+        // Deve alternar o estado do LED verde
+        if(gpio == BUTTON_A) {
+            if(gpio_get(LED_GREEN))
+                puts("\nLED verde desligado.");
+            else
+                puts("\nLED verde ligado.");
+            // ALTERNA O ESTADO DO LED
+            gpio_put(LED_GREEN, !gpio_get(LED_GREEN));
+        }
+
     }
 }

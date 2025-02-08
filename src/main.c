@@ -31,7 +31,9 @@ int main() {
     gpio_set_function(UART_TX, GPIO_FUNC_UART);
     gpio_set_function(UART_RX, GPIO_FUNC_UART);
 
-
+    // Inicializa os LEDS
+    init_led(LED_GREEN);
+    init_led(LED_BLUE);
     // Inicialização do botões e configuração de eventos de interrupção
     init_button_with_interrupt(BUTTON_A, GPIO_IRQ_EDGE_FALL, true);
     init_button_with_interrupt(BUTTON_B, GPIO_IRQ_EDGE_FALL, true);
@@ -43,6 +45,9 @@ int main() {
     uint offset = pio_add_program(pio, &ws2812_program);
     ws2812_program_init(pio, sm, offset, WS2812_PIN, 800000, IS_RGBW);
 
+
+    // Aguarda pressionar Enter para exibir o menu pela primeira vez
+    getchar();
     char input;
     // rotina principal
     while(true) {
@@ -50,7 +55,16 @@ int main() {
         // so vai entrar nessa rotina se a USB estiver conectada
         if(stdio_usb_connected()) {
             main_menu();
-            scanf("%c", &input);
+            puts("");
+            while(true) {
+                printf("Escolha uma opcao: ");
+                scanf("%c", &input);
+                if((input>= '0' && input <= '9')
+                                || input == 'c'
+                                || input == 27)
+                    break;
+                printf("Caractere inválido!\n");
+            }
             switch (input) {
                 case '0':
                     /* code */
@@ -91,6 +105,7 @@ int main() {
                 default:
                     break;
             }
+            puts("");
         }
         // para evitar que o loop seja executado muito rapidamente
         sleep_ms(100);

@@ -7,6 +7,8 @@
 void init_led(uint8_t LED) {
     gpio_init(LED);
     gpio_set_dir(LED, GPIO_OUT);
+    //inicia apagado
+    turn_led_off(LED);
 }
 
 // liga um led
