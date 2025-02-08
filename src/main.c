@@ -54,10 +54,6 @@ int main() {
     ssd1306_fill(&ssd, false);
     ssd1306_send_data(&ssd);
 
-    ssd1306_draw_string(&ssd, "teste de", 10, 20);
-    ssd1306_draw_string(&ssd, "display", 10, 30);
-    ssd1306_send_data(&ssd); // Atualiza o display
-
     
     // Inicializa os LEDS
     init_led(LED_GREEN);
@@ -87,12 +83,32 @@ int main() {
             while(true) {
                 printf("Escolha uma opcao: ");
                 scanf("%c", &input);
+                // encerra o loop se pressionar
+                    // um caractere entre 0 e 9
+                    // um caractere entre A-Z
+                    // um caractere entre a-z
+                    // /: para finalizar o programa
                 if((input>= '0' && input <= '9')
-                                || input == 'c'
-                                || input == 27)
+                    || (input >= 'A' && input <= 'Z')
+                    || (input >= 'a' && input <= 'z')
+                    || input == '/')
                     break;
                 printf("Caractere inválido!\n");
             }
+            // Exibe o caractere digitado no display (se for alfanumérico)
+            if((input >= 'A' && input <= 'Z') || 
+            (input >= 'a' && input <= 'z') || 
+            (input>= '0' && input <= '9')) {
+                char input_string[20];
+                // limpa o display
+                ssd1306_fill(&ssd, false);
+                ssd1306_send_data(&ssd);
+                ssd1306_draw_string(&ssd, "caractere", 10, 20);
+                snprintf(input_string, sizeof(input_string), "digitado %c", input);
+                ssd1306_draw_string(&ssd, input_string, 10, 30);
+                ssd1306_send_data(&ssd);
+            }
+            printf("\nCaractere digitado: %c\n", input);
             switch (input) {
                 case '0':
                     actual_number = 0;
@@ -144,18 +160,15 @@ int main() {
                     set_one_led(numbers[actual_number], led_r, led_g, led_b);
                     printf("\nExibindo o numero %d na matriz\n", actual_number);
                     break;   
-                // limpa o terminal              
-                case 'c':
-                    system("cls");
-                    break;
                 // ESCAPE para finalizar o programa
-                case 27:
+                case '/':
                     // posição da matriz de reset
                     actual_number = 10;
                     // desliga os leds da matriz
                     set_one_led(numbers[actual_number], led_r, led_g, led_b);
                     // Entra no modo BOOTSELL e encerra o programa
                     reset_usb_boot(0,0);
+                    printf("\nFinalizando o programa...\n");
                     break;
                 default:
                     break;

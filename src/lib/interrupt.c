@@ -3,6 +3,7 @@
 #include "led.h"
 #include "pico/bootrom.h"
 #include "pico/stdlib.h"
+#include "ssd1306.h"
 #include <stdio.h>
 
 // Função que lida com eventos de interrupção
