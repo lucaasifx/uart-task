@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "pico/stdlib.h"
 #include "hardware/pio.h"
 #include "hardware/clocks.h"
@@ -67,37 +68,58 @@ int main() {
             }
             switch (input) {
                 case '0':
-                    /* code */
+                    actual_number = 0;
+                    set_one_led(numbers[actual_number], led_r, led_g, led_b);
+                    printf("Exibindo o numero %d na matriz\n", actual_number);
                     break;
                 case '1':
-                    /* code */
+                    actual_number = 1;
+                    set_one_led(numbers[actual_number], led_r, led_g, led_b);
+                    printf("Exibindo o numero %d na matriz\n", actual_number);
                     break;
                 case '2':
-                    /* code */
+                    actual_number = 2;
+                    set_one_led(numbers[actual_number], led_r, led_g, led_b);
+                    printf("Exibindo o numero %d na matriz\n", actual_number);
                     break;
                 case '3':
-                    /* code */
+                    actual_number = 3;
+                    set_one_led(numbers[actual_number], led_r, led_g, led_b);
+                    printf("Exibindo o numero %d na matriz\n", actual_number);
                     break;
                 case '4':
-                    /* code */
+                    actual_number = 4;
+                    set_one_led(numbers[actual_number], led_r, led_g, led_b);
+                    printf("Exibindo o numero %d na matriz\n", actual_number);
                     break;
                 case '5':
-                    /* code */
+                    actual_number = 5;
+                    set_one_led(numbers[actual_number], led_r, led_g, led_b);
+                    printf("Exibindo o numero %d na matriz\n", actual_number);
                     break;   
                 case '6':
-                    /* code */
+                    actual_number = 6;
+                    set_one_led(numbers[actual_number], led_r, led_g, led_b);
+                    printf("Exibindo o numero %d na matriz\n", actual_number);
                     break;  
                 case '7':
-                    /* code */
+                    actual_number = 7;
+                    set_one_led(numbers[actual_number], led_r, led_g, led_b);
+                    printf("Exibindo o numero %d na matriz\n", actual_number);
                     break; 
                 case '8':
-                    /* code */
+                    actual_number = 8;
+                    set_one_led(numbers[actual_number], led_r, led_g, led_b);
+                    printf("Exibindo o numero %d na matriz\n", actual_number);
                     break; 
                 case '9':
-                    /* code */
+                    actual_number = 9;
+                    set_one_led(numbers[actual_number], led_r, led_g, led_b);
+                    printf("Exibindo o numero %d na matriz\n", actual_number);
                     break;   
                 // limpa o terminal              
                 case 'c':
+                    system("cls");
                     break;
                 // ESCAPE para finalizar o programa
                 case 27:
