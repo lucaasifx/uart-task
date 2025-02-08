@@ -47,6 +47,7 @@ target_link_libraries(uart-task PRIVATE
     hardware_pio
     hardware_clocks
     hardware_uart
+    hardware_i2c
 )
 pico_add_extra_outputs(uart-task) 
 

@@ -74,6 +74,13 @@ bool number_9[] = {
     0, 1, 0, 1, 0, 
     0, 1, 1, 1, 0
 };
+bool reset[] = {
+    0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0, 
+    0, 0, 0, 0, 0
+};
 // **************************************************************
 // ************************* MACROS *****************************
 
@@ -81,7 +88,7 @@ bool number_9[] = {
 bool *numbers[] = {number_0, number_1, number_2, 
                     number_3, number_4, number_5,
                     number_6, number_7, number_8,
-                    number_9};
+                    number_9, reset};
 // variável global que controla o numero a ser exibido
 volatile uint actual_number = 0;
 
