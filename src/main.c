@@ -54,8 +54,8 @@ int main() {
     ssd1306_fill(&ssd, false);
     ssd1306_send_data(&ssd);
 
-    ssd1306_draw_string(&ssd, "TESTE DE", 10, 20);
-    ssd1306_draw_string(&ssd, "DISPLAY", 10, 30);
+    ssd1306_draw_string(&ssd, "teste de", 10, 20);
+    ssd1306_draw_string(&ssd, "display", 10, 30);
     ssd1306_send_data(&ssd); // Atualiza o display
 
     
