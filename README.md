@@ -83,5 +83,5 @@ Diretórios Principais
 - ✅ Explicação das funcionalidades.
 - ✅ Execução do código na placa BitDogLab.
 - ✅ Interação com botões e LEDs.
-- 🔗 [Vídeo de demonstração no hardware](https://www.youtube.com)
+- 🔗 [Vídeo de demonstração no hardware](https://youtu.be/jjjKSBAi-HM)
 ##
