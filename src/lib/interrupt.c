@@ -19,18 +19,50 @@ void gpio_irq_handler(uint gpio, uint32_t events) {
 
         // Deve alternar o estado do LED verde
         if(gpio == BUTTON_A) {
-            if(gpio_get(LED_GREEN))
+            if(gpio_get(LED_GREEN)) {
                 puts("\nLED verde desligado.");
-            else
+                // Mensagem no display
+                // limpa o display
+                ssd1306_fill(&ssd, false);
+                ssd1306_send_data(&ssd);
+                ssd1306_draw_string(&ssd, "LED VERDE", 10, 20);
+                ssd1306_draw_string(&ssd, "DESLIGADO", 10, 30);
+                ssd1306_send_data(&ssd);
+            }
+            else {
                 puts("\nLED verde ligado.");
+                // Mensagem no display
+                // limpa o display
+                ssd1306_fill(&ssd, false);
+                ssd1306_send_data(&ssd);
+                ssd1306_draw_string(&ssd, "LED VERDE", 10, 20);
+                ssd1306_draw_string(&ssd, "LIGADO", 10, 30);
+                ssd1306_send_data(&ssd);
+            }
             // ALTERNA O ESTADO DO LED verde
             gpio_put(LED_GREEN, !gpio_get(LED_GREEN));
         }
         if(gpio == BUTTON_B) {
-            if(gpio_get(LED_BLUE))
+            if(gpio_get(LED_BLUE)) {
                 puts("\nLED azul desligado.");
-            else
+                // Mensagem no display
+                // limpa o display
+                ssd1306_fill(&ssd, false);
+                ssd1306_send_data(&ssd);
+                ssd1306_draw_string(&ssd, "LED AZUL", 10, 20);
+                ssd1306_draw_string(&ssd, "DESLIGADO", 10, 30);
+                ssd1306_send_data(&ssd);
+            }
+            else {
                 puts("\nLED azul ligado.");
+                // Mensagem no display
+                // limpa o display
+                ssd1306_fill(&ssd, false);
+                ssd1306_send_data(&ssd);
+                ssd1306_draw_string(&ssd, "LED AZUL", 10, 20);
+                ssd1306_draw_string(&ssd, "LIGADO", 10, 30);
+                ssd1306_send_data(&ssd);
+            }
             // ALTERNA O ESTADO DO LED azul
             gpio_put(LED_BLUE, !gpio_get(LED_BLUE));
         }

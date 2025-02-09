@@ -5,6 +5,7 @@
 #define WIDTH 128
 #define HEIGHT 64
 
+
 typedef enum {
   SET_CONTRAST = 0x81,
   SET_ENTIRE_ON = 0xA4,
@@ -33,6 +34,10 @@ typedef struct {
   size_t bufsize;
   uint8_t port_buffer[2];
 } ssd1306_t;
+
+
+extern ssd1306_t ssd;
+
 
 void ssd1306_init(ssd1306_t *ssd, uint8_t width, uint8_t height, bool external_vcc, uint8_t address, i2c_inst_t *i2c);
 void ssd1306_config(ssd1306_t *ssd);
