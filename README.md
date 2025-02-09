@@ -69,8 +69,12 @@ Diretórios Principais
 6. Navegue até a opção Compilar Projeto:<br>
 ![image](https://github.com/user-attachments/assets/366a506d-171c-4c30-9577-e61d1575da33)
 7. Coloque a BitDogLab no modo BOOTSELL e carregue o software:<br>
-   - Pressione ```ENTER``` para exibir o Menu Principal<br>
 ![image](https://github.com/user-attachments/assets/ea3cc647-49e4-4803-a10f-d5afc3cdfae0)
+   - Acesse o monitor serial do VS Code.<br>
+   - Habilite a opção Toggle Terminal Mode para permitir inputs do teclado no terminal da Pico<br>
+![image](https://github.com/user-attachments/assets/73e4a436-7124-433d-af02-82d905ae0e03)
+   - Selecione a opção Start Monitoring e pressione ```ENTER``` para exibir o Menu Principal<br>
+![image](https://github.com/user-attachments/assets/877104d3-25f2-4f56-8aeb-bc32831c099d)
 
 
 
