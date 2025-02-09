@@ -1,6 +1,7 @@
 #include "interrupt.h"
 #include "button.h"
 #include "led.h"
+#include "matrix.h"
 #include "pico/bootrom.h"
 #include "pico/stdlib.h"
 #include "ssd1306.h"
@@ -14,8 +15,19 @@ void gpio_irq_handler(uint gpio, uint32_t events) {
         if(!debouncing(300))
             return;
         // Habilita a entrada do modo BOOTSELL ao pressionar JOYSTICK_BUTTON
-        if(gpio == JOYSTICK_BUTTON)
+        if(gpio == JOYSTICK_BUTTON) {
+            // posição da matriz de reset
+            actual_number = 10;
+            // desliga os leds da matriz
+            set_one_led(numbers[actual_number], led_r, led_g, led_b);
+
+            //limpa o display
+            ssd1306_fill(&ssd, false);
+            ssd1306_send_data(&ssd);
+            // Entra no modo BOOTSELL e encerra o programa
+            printf("\nFinalizando o programa...\n");
             reset_usb_boot(0,0);
+        }
 
         // Deve alternar o estado do LED verde
         if(gpio == BUTTON_A) {

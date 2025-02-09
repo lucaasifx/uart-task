@@ -10,12 +10,19 @@
 
 // ************************* LIBS ******************************
 
+// biblioteca para manipulação da matriz de leds
 #include "matrix.h"
+// biblioteca para manipulação de botões
 #include "lib/button.h"
+// biblioteca para manipulação de LEDs
 #include "lib/led.h"
+// biblioteca para manipulação de eventos de interrupção
 #include "lib/interrupt.h"
+// menu interativo
 #include "menu.h"
+//arquivo gerado pelo Cmakelist.txt para manipulação de PIO
 #include "lib/ws2812.pio.h"
+// biblioteca para manipulação do display SSD1306
 #include "lib/ssd1306.h"
 
 // *********************** MACROS *******************************
@@ -24,7 +31,7 @@
 #define UART_TX 0
 #define UART_RX 1
 #define BAUD_RATE 115200
-// Configuração da I2C
+// Configurações da I2C
 #define I2C_PORT i2c1
 #define I2C_SDA 14
 #define I2C_SCL 15
@@ -186,9 +193,13 @@ int main() {
                     actual_number = 10;
                     // desliga os leds da matriz
                     set_one_led(numbers[actual_number], led_r, led_g, led_b);
+
+                    //limpa o display
+                    ssd1306_fill(&ssd, false);
+                    ssd1306_send_data(&ssd);
                     // Entra no modo BOOTSELL e encerra o programa
-                    reset_usb_boot(0,0);
                     printf("\nFinalizando o programa...\n");
+                    reset_usb_boot(0,0);
                     break;
                 default:
                     break;
