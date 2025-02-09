@@ -69,6 +69,7 @@ Diretórios Principais
 6. Navegue até a opção Compilar Projeto:<br>
 ![image](https://github.com/user-attachments/assets/366a506d-171c-4c30-9577-e61d1575da33)
 7. Coloque a BitDogLab no modo BOOTSELL e carregue o software:<br>
+   - Pressione ```ENTER``` para exibir o Menu Principal<br>
 ![image](https://github.com/user-attachments/assets/ea3cc647-49e4-4803-a10f-d5afc3cdfae0)
 
 
